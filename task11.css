@@ -17,10 +17,15 @@ h6 {
 #task11png {
   height: 40vh;
 }
-#firstNamesCont,#namesList {
+#firstNamesCont,
+#namesList,
+#searchBarInput {
   display: none;
 }
 
 button {
   width: max-content;
+}
+#searchingContainer{
+    display: flex;
 }

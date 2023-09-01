@@ -71,7 +71,7 @@ function getAge(userDateRecevied) {
   }
   return age;
 }
-var counter = 0;
+var counter = -1;
 var namesArr = [];
 var lastName;
 
@@ -99,6 +99,7 @@ function takeUserNameList() {
     createUserFullNameObjAndPrintList();
   }
 }
+takeUserNameList();
 function createUserFullNameObjAndPrintList() {
   var userFullNamesArray = [];
   for (let i = 0; i < 4; i++) {
@@ -116,10 +117,39 @@ function createUserFullNameObjAndPrintList() {
   }
   var namesList = document.getElementsByClassName("namesListItem");
   for (let i = 0; i < namesList.length; i++) {
-    firstNameValue=namesList[i].innerText
-    console.log(firstNameValue.charAt(0), lastName.charAt(0));
-    if(firstNameValue.charAt(0)== lastName.charAt(0)){
-        namesList[i].style="color:red"
+    firstNameValue = namesList[i].innerText;
+    
+    if (firstNameValue.charAt(0) == lastName.charAt(0)) {
+      namesList.style = "color:red";
+    }
+  }
+  document.getElementById(
+    "searchingContainer"
+  ).innerHTML += `<button id="createSearchBarBtn" onclick="searchName()" > Search </button>`;
+}
+function searchName() {
+  document.getElementById("searchBarInput").style.display = "block";
+  document.getElementById("createSearchBarBtn").style.display = "none";
+  document.getElementById(
+    "searchingContainer"
+  ).innerHTML += `<button id="searchBtn" onclick="searchBarTyper()" > Search </button>`;
+}
+function searchBarTyper() {
+    namesList=document.getElementsByClassName("namesListItem");
+  var tempString = "";
+  var part1="",part2="",part3=""
+  
+  var searchedIndex = 0;
+  var searchedVal = document.getElementById("searchBarInput").value;
+  for (let i = 0; i < namesList.length; i++) {
+    
+    tempString=namesList[i].innerText
+    searchedIndex=tempString.indexOf(searchedVal)
+    if(searchedVal ==tempString.substring(searchedIndex,(searchedIndex + searchedVal.length))){
+    part1 =tempString.substring(0,searchedIndex) 
+    part2=tempString.substring(searchedIndex,(searchedIndex + searchedVal.length))
+    part3 =tempString.substring(searchedIndex + searchedVal.length)
+    namesList[i].innerHTML = `${part1}<span style="color:blue">${part2}</span>${part3}`
     }
   }
 }
