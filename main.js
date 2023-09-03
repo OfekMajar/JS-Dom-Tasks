@@ -313,3 +313,106 @@ function makeContactList() {
 //   `
 // }
 //29 ?
+//30
+function cityObj() {
+  var city = {
+    name: prompt("enter name"),
+    citizensNum: +prompt("enter the number of cizitens"),
+    simbol: prompt("enter simbol URL :"),
+  };
+  document.body.innerHTML += ` <div> city's name ${city.name} number of citizens ${city.citizensNum} citys simbol <img src="${city.simbol}" alt=""> </div>`;
+}
+// cityObj()
+//31
+function userObj() {
+  var user = {
+    firstNamename: prompt("enter first name"),
+    lastName: prompt("enter last name"),
+    profilePic: prompt("enter simbol URL :"),
+    email: prompt("enter email"),
+    password: prompt("enter password"),
+  };
+  document.body.innerHTML += ` 
+<div> ${user.firstNamename}</div>
+<div> ${user.lastName}</div>
+<div><img src=" ${user.profilePic}" alt=""></div>
+<div> ${user.email}</div>
+<div> ${user.password}</div>
+`;
+}
+// userObj()
+// var carsObjArr = [];
+// var cars = {};
+// for (var i = 0; i < 2; i++) {
+//   cars.company = prompt("Enter car's company");
+//   cars.color = prompt("Enter car's color");
+//   cars.cc = +prompt("Enter cars cc");
+//   carsObjArr[i] = cars;
+// }
+// document.getElementById("divContainer").innerHTML += `
+// // <table>
+// // <thead>
+// //   <th>company Name</th>
+// //   <th>color</th>
+// //   <th>cc</th>
+// // </thead>
+// // <tbody id=tableBodyT24>
+// // </tbody>
+// // </table>`;
+// for (var i = 0; i < carsObjArr.length; i++) {
+//   document.getElementById("tableBodyT24").innerHTML += `
+// <tr>
+// <td>${carsObjArr[i].company}</td>
+// <td>${carsObjArr[i].color}</td>
+// <td>${carsObjArr[i].cc}</td>
+// </td>
+// `;
+// }
+//33
+function catObj() {
+  var catObj = {};
+  for (let i = 0; i < 3; i++) {
+    (catObj.name = prompt("enter name")),
+      (catObj.birthYear = prompt("Enter birth year")),
+      (catObj.breed = prompt("enter breed")),
+      (catObj.weight = +prompt("enter weight"));
+
+    document.body.innerHTML += `
+    <h1>name: ${catObj.name}</h1>
+    <h1>birth year: ${catObj.birthYear}</h1>
+    <h1>breed: ${catObj.breed} </h1>
+    <h1>weight: ${catObj.weight} kg</h1>
+    `;
+  }
+}
+// catObj()
+//39
+function furnitureObjMaker(numOfObj, name, brand, storesArr, price) {
+  var furnitureObj = {};
+  furnitureArray = [];
+  for (let i = 0; i < numOfObj; i++) {
+    furnitureObj[i].name = name;
+    furnitureObj[i].brand = brand;
+    furnitureObj[i].stores = storesArr;
+    furnitureObj[i].price = price;
+    furnitureArray[i] = furnitureObj[i];
+  }
+  for (let j = 0; j < furnitureArray.length; j++) {
+    document.body.innerHTML += `<h1>${furnitureArray[j].name} </h1>``<ul id="furnitureList">  </ul> 
+    `;
+  }
+  for (let j = 0; j < furnitureArray.length; j++) {
+    for (let k = 0; k < storesArr.length; k++) {
+      document.getElementById("furnitureList").innerHTML += `
+    <li> ${furnitureArray[j].storesArr[k]}</li>
+    `;
+    }
+  }
+}
+furnitureObjMaker(
+  2,
+  "dsad",
+  "Asd",
+  ["apple", "ASda", "ASgx", "ASdaf", "ASda"],
+  125
+);

@@ -100,6 +100,7 @@ function takeUserNameList() {
   }
 }
 takeUserNameList();
+namesList=document.getElementsByClassName("namesListItem");
 function createUserFullNameObjAndPrintList() {
   var userFullNamesArray = [];
   for (let i = 0; i < 4; i++) {
@@ -112,7 +113,7 @@ function createUserFullNameObjAndPrintList() {
   document.getElementById("firstNamesCont").style.display = "none";
   for (let j = 0; j < userFullNamesArray.length; j++) {
     document.getElementById("namesList").innerHTML += `
-    <li class="namesListItem"> ${userFullNamesArray[j].firstName} ${userFullNamesArray[j].lastName}</li>
+    <li class="namesListItem "> ${userFullNamesArray[j].firstName} ${userFullNamesArray[j].lastName}</li>
     `;
   }
   var namesList = document.getElementsByClassName("namesListItem");
@@ -126,13 +127,24 @@ function createUserFullNameObjAndPrintList() {
   document.getElementById(
     "searchingContainer"
   ).innerHTML += `<button id="createSearchBarBtn" onclick="searchName()" > Search </button>`;
+//Used help
+  document.getElementById("namesList").addEventListener("click", function(event) {
+    if (event.target && event.target.nodeName === "LI") {
+      event.target.style.display = "none";
+    }
+  });
+  // 
 }
+
+
 function searchName() {
   document.getElementById("searchBarInput").style.display = "block";
   document.getElementById("createSearchBarBtn").style.display = "none";
   document.getElementById(
     "searchingContainer"
-  ).innerHTML += `<button id="searchBtn" onclick="searchBarTyper()" > Search </button>`;
+  ).innerHTML += `<button id="searchBtn" onclick="searchBarTyper()" onmouseover="HoveringLogMsg()"> Search </button>`;
+  document.getElementById("searchingContainer").innerHTML +=` <button id="lengthOrganizerBtn" onclick="organizeByLength()" >Sort by length </button>`
+  document.getElementById("searchingContainer").innerHTML +=` <button id="abcOrganizerBtn" onclick="organizeByAbc()" >Sort by abc </button>`
 }
 function searchBarTyper() {
     namesList=document.getElementsByClassName("namesListItem");
@@ -141,6 +153,7 @@ function searchBarTyper() {
   
   var searchedIndex = 0;
   var searchedVal = document.getElementById("searchBarInput").value;
+  
   for (let i = 0; i < namesList.length; i++) {
     
     tempString=namesList[i].innerText
@@ -152,4 +165,36 @@ function searchBarTyper() {
     namesList[i].innerHTML = `${part1}<span style="color:blue">${part2}</span>${part3}`
     }
   }
+}
+function HoveringLogMsg(){
+  console.log("the search button is being hovered");
+}
+function organizeByLength(){
+  var namesLengthArr=[]
+  for (let i = 0; i < namesList.length; i++) {
+    namesLengthArr[i] = namesList[i].innerText;
+  }
+namesLengthArr.sort((a, b) => a.length - b.length);
+document.getElementById("namesList").innerHTML =``;
+for (let j = 0; j < namesLengthArr.length; j++) {
+  document.getElementById("namesList").innerHTML += `
+  <li class="namesListItem">${namesLengthArr[j]} </li>
+  `;
+}
+console.log( namesLengthArr);
+}
+function organizeByAbc(){
+  var namesAbcArr=[]
+  for (let i = 0; i < namesList.length; i++) {
+    namesAbcArr[i] = namesList[i].innerText;
+  }
+  namesAbcArr.sort();
+document.getElementById("namesList").innerHTML =``;
+for (let j = 0; j < namesAbcArr.length; j++) {
+  document.getElementById("namesList").innerHTML += `
+  <li class="namesListItem">${namesAbcArr[j]} </li>
+  `;
+}
+console.log( namesAbcArr);
+
 }
