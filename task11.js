@@ -2,35 +2,6 @@ function changeColorToGreen() {
   document.getElementById("task11h3").style.color = "green";
 }
 // checkAgeAndColorText();
-//9
-var userNumArr = [];
-var counter = 0;
-function randomNumGen() {
-  userNumArr[counter] = +document.getElementById("task9userNum").innerText;
-  counter++;
-  document.getElementById("task9userNum").value = "";
-  document.getElementById("task9userNum").focus();
-  if (counter == 5) {
-    if (checkIfRandomNumSameAsNum(userNumArr) == true) {
-      document.body.innerHTML = `
-      <h1> You won!</h1>`;
-    } else {
-      document.body.innerHTML = `
-      <h1> You lost!</h1>`;
-    }
-  }
-}
-function checkIfRandomNumSameAsNum(userNumArr) {
-  var randNum = Math.floor(Math.random() * 57);
-  console.log(randNum);
-  for (let i = 0; i < userNumArr.length; i++) {
-    if (userNumArr[i] === randNum) {
-      return true;
-    }
-  }
-  return false;
-}
-//10
 //11
 function changeBackColor() {
   document.getElementById("task11h3").style.color = "blue";

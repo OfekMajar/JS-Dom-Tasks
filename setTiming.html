@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body,
+      #inputCont {
+        display: flex;
+        justify-content: center;
+      }
+      #inputCont {
+        margin-bottom: 5vh;
+      }
+      #timerCont {
+        display: flex;
+        width: 60vw;
+        height: 30vh;
+        background-color: gray;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      .timeNumbers {
+        font-size: 120px;
+        width: max-content;
+        border: 1px solid;
+      }
+      #mainContainer {
+        display: flex;
+        flex-direction: column;
+      }
+      button {
+        margin-top: 4vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mainContainer">
+      <div id="inputCont"></div>
+      <div id="timerCont">
+        <div><p class="timeNumbers" id="hoursClock">00</p></div>
+        <div><p class="timeNumbers" id="minutesClock">00</p></div>
+        <div><p class="timeNumbers" id="secondsClock">00</p></div>
+      </div>
+      <button onclick="startOrStop()">Start/Stop</button>
+
+    </div>
+    <script src="setTiming.js"></script>
+  </body>
+</html>
