@@ -1,8 +1,7 @@
 var userMin,
   currentTime,
   userHour,
-  timerStarted = 0,
-  mainContainer = document.getElementById("mainContainer");
+  timerStarted = 0;
 var currentSec;
 function task6() {
   inputCont.innerHTML += `
@@ -58,10 +57,7 @@ function sendTime() {
   }
 
 }
-console.log(currentSec);
-// document.getElementById("minutesClock").innerText = `${
-//   currentMinBigger ? `0${userMin}` : userMin
-// }`;
+// console.log(currentSec);
 function startOrStop() {
   timerStarted++;
   if (timerStarted % 2 == 1) {
@@ -78,8 +74,8 @@ var secondsCounter;
 function secondCounterFunc() {
   var tempTime = new Date();
   secondsCounter = 60 - tempTime.getSeconds();
-  console.log(tempTime.getSeconds());
-  console.log(secondsCounter);
+  // console.log(tempTime.getSeconds());
+  // console.log(secondsCounter);
   if (
     (secondsClock.innerText <= 0 &&
       document.getElementById("minutesClock").innerText > 0) ||
@@ -97,6 +93,7 @@ function secondCounterFunc() {
   ) {
     timesUpStoper();
   }
+  console.log(tempTime);
 }
 function minuteCounterFunc() {
   var tempMinutes = +minutesClock.innerText;
